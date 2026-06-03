@@ -1,7 +1,7 @@
 // ============================================================
 //  HANDWERKER TEMPLATE — Kundenkonfiguration
 //  Alle kundespezifischen Werte hier eintragen.
-//  Bilder: logo-client.svg, favicon-client.svg, hero-poster.svg
+//  Bilder: logo-client.png, favicon-client.png, hero-video.mp4, ref_*.jpg
 // ============================================================
 const CLIENT = {
   // ── FIRMA ──────────────────────────────────────────────────
@@ -196,6 +196,24 @@ const CLIENT = {
   jahreErfahrung:    "Meister",
   teamGroesse:       "Fachteam",
   bewertungenAnzahl: "Google-Profil",
+
+  // ── PARTNER (Quelle: malergeschaeft-schmitt.de/Partner/) ───
+  partnerIntro: "Gemeinsam mit regionalen Fachbetrieben und bewährten Systempartnern in Koblenz und der Region.",
+  partnerBgColor: "var(--secondary-dark, #1c1a14)",
+  partner: [
+    { name: "Schreinerei Meerbothe",       url: "http://www.schreinerei-meerbothe.de/start.html", logo: "" },
+    { name: "Schreinerei Müller",         url: "http://innenausbau-mueller.com/",                logo: "" },
+    { name: "Elektro-Service-Dietze",     url: "",                                               logo: "" },
+    { name: "Jakob Dunkel",               url: "http://www.dunkel-elektroanlagen.de/",           logo: "" },
+    { name: "Dachdecker Marco Zeuzheim",  url: "http://www.dachdecker-zeuzheim.de/",             logo: "" },
+    { name: "Bedachungen Rudolf Fetz",    url: "http://www.bedachungen-fetz.de/",                logo: "" },
+    { name: "a.knipp natursteine",        url: "http://www.aknipp.de/",                           logo: "" },
+    { name: "Kürsten Sanitär",            url: "http://www.kuersten-shk.de/",                     logo: "" },
+    { name: "Brillux",                    url: "http://www.brillux.de/",                           logo: "" },
+    { name: "Südwest",                    url: "https://suedwest.de/",                             logo: "" },
+    { name: "ED Baucenter",               url: "https://ed-baucenter.de/",                         logo: "" },
+    { name: "MEG",                        url: "https://www.meg.de/",                              logo: "" }
+  ],
 
   // ── INTERN ─────────────────────────────────────────────────
   klaroStorageName: "schmitt-consent-v1"

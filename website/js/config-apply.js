@@ -416,7 +416,58 @@
       }
     });
 
-    // ── 26. DATENSCHUTZ: aufsichtsbehoerde Direktlink ────
+    // ── 26. PARTNER-KARUSSELL ─────────────────────────────
+    const renderPartners = () => {
+      if (!Array.isArray(CLIENT.partner) || !CLIENT.partner.length) return;
+
+      const scriptEl = document.querySelector('script[src*="config-apply"]');
+      const scriptSrc = scriptEl?.getAttribute('src') || '';
+      const imgPrefix = scriptSrc.includes('/leistungen/') ? '../images/' : 'images/';
+
+      const escapeHtml = (str) => String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      const buildCard = (partner) => {
+        const name = partner.name || '';
+        const url = partner.url && !String(partner.url).startsWith('[') ? partner.url : '';
+        const logo = partner.logo && !String(partner.logo).startsWith('[') ? partner.logo : '';
+        let inner = '';
+        if (logo) {
+          const logoSrc = logo.startsWith('http') ? logo : `${imgPrefix}${logo.replace(/^\/?images\//, '')}`;
+          inner = `<img class="partner-card__img" src="${escapeHtml(logoSrc)}" alt="${escapeHtml(name)}" loading="lazy" decoding="async">`;
+        } else {
+          inner = `<span class="partner-card__label">${escapeHtml(name)}</span>`;
+        }
+        if (url) {
+          return `<a class="partner-card" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${inner}</a>`;
+        }
+        return `<span class="partner-card partner-card--text">${inner}</span>`;
+      };
+
+      document.querySelectorAll('[data-partner-track]').forEach(container => {
+        const cardsHtml = CLIENT.partner.map(buildCard).join('');
+        const compact = container.hasAttribute('data-partner-compact');
+        const marquee = document.createElement('div');
+        marquee.className = `partner-marquee${compact ? ' partner-marquee--compact' : ''}`;
+        if (CLIENT.partnerBgColor && !String(CLIENT.partnerBgColor).startsWith('[')) {
+          marquee.style.setProperty('--partner-bg', CLIENT.partnerBgColor);
+        }
+        const track = document.createElement('div');
+        track.className = 'partner-marquee__track';
+        track.setAttribute('aria-label', 'Partner und Netzwerk');
+        track.innerHTML = cardsHtml + cardsHtml;
+        marquee.appendChild(track);
+        container.innerHTML = '';
+        container.appendChild(marquee);
+      });
+    };
+
+    renderPartners();
+
+    // ── 27. DATENSCHUTZ: aufsichtsbehoerde Direktlink ────
     // Hinweis: href wird bereits durch Sektion 4 (data-config-href="aufsichtsbehoerde") gesetzt.
     // Textinhalt wird durch Sektion 3 (data-config="aufsichtsbehoerde") auf dem Kind-Element gesetzt.
     // Diese Sektion dient als Sicherheitsnetz für Seiten, die nur das <a> ohne Span nutzen.

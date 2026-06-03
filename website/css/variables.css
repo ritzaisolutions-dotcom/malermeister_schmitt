@@ -89,5 +89,5 @@
 
   --section-p-y: var(--sp-8);
   --section-gap: var(--sp-6);
-  --hero-min-h: 115vh;
+  --hero-min-h: 100svh;
 }

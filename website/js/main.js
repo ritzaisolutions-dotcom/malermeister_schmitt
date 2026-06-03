@@ -47,88 +47,75 @@
     });
   }
 
-  /* === SCROLL INDICATOR === */
-  const scrollIndicator = document.getElementById('scrollIndicator');
-  if (scrollIndicator) {
-    const hideIndicator = () => {
-      if (window.scrollY > 120) {
-        scrollIndicator.classList.add('hidden');
-        window.removeEventListener('scroll', hideIndicator);
-      }
+  /* === NAV: Leistungen dropdown (desktop) === */
+  const navDropdown = document.querySelector('.nav__item--dropdown');
+  const navDropdownBtn = document.getElementById('navLeistungenBtn');
+  const navDropdownMenu = document.getElementById('navLeistungenMenu');
+
+  if (navDropdown && navDropdownBtn && navDropdownMenu) {
+    const desktopNav = window.matchMedia('(min-width: 901px)');
+    let closeTimer = null;
+
+    const openDropdown = () => {
+      navDropdown.classList.add('is-open');
+      navDropdownBtn.setAttribute('aria-expanded', 'true');
+      navDropdownMenu.removeAttribute('hidden');
     };
-    window.addEventListener('scroll', hideIndicator, { passive: true });
+
+    const closeDropdown = () => {
+      navDropdown.classList.remove('is-open');
+      navDropdownBtn.setAttribute('aria-expanded', 'false');
+      navDropdownMenu.setAttribute('hidden', '');
+    };
+
+    const scheduleClose = () => {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(closeDropdown, 120);
+    };
+
+    navDropdownBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (navDropdown.classList.contains('is-open')) closeDropdown();
+      else openDropdown();
+    });
+
+    navDropdownMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeDropdown);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navDropdown.contains(e.target)) closeDropdown();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDropdown();
+    });
+
+    const bindHover = () => {
+      if (!desktopNav.matches) return;
+      navDropdown.addEventListener('mouseenter', () => {
+        clearTimeout(closeTimer);
+        openDropdown();
+      });
+      navDropdown.addEventListener('mouseleave', scheduleClose);
+      navDropdownMenu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      navDropdownMenu.addEventListener('mouseleave', scheduleClose);
+    };
+
+    bindHover();
+    desktopNav.addEventListener('change', () => {
+      closeDropdown();
+    });
   }
 
-  const heroSection = document.getElementById('hero');
-  const heroSticky = document.getElementById('heroSticky');
-  if (heroSection && heroSticky) {
-    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const heroFxMobileMq = window.matchMedia('(max-width: 768px)');
-    const heroFxReducedMq = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const resetHeroFx = () => {
-      heroSection.style.setProperty('--hero-scale', '1');
-      heroSection.style.setProperty('--hero-radius', '0px');
-      heroSection.style.setProperty('--hero-overlay-opacity', '1');
-      heroSection.style.setProperty('--hero-content-y', '0px');
-      heroSection.style.setProperty('--hero-content-opacity', '1');
+  /* === HERO: Scroll indicator (hide after first scroll) === */
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  if (scrollIndicator) {
+    const updateScrollIndicator = () => {
+      scrollIndicator.classList.toggle('hidden', window.scrollY > 80);
     };
-
-    const heroFxEnabled = () => !heroFxMobileMq.matches && !heroFxReducedMq.matches;
-
-    const updateHeroProgress = () => {
-      if (!heroFxEnabled()) {
-        resetHeroFx();
-        return;
-      }
-
-      const rect = heroSection.getBoundingClientRect();
-      const total = Math.max(1, rect.height - window.innerHeight);
-      const progress = clamp(-rect.top / total, 0, 1);
-
-      const scale = lerp(1, 0.82, progress);
-      const radius = lerp(0, 28, progress);
-      const overlayOpacity = lerp(1, 0.5, progress);
-      const contentY = lerp(0, -72, clamp(progress / 0.42, 0, 1));
-      const contentOpacity = progress < 0.35 ? lerp(1, 0, clamp(progress / 0.35, 0, 1)) : 0;
-
-      heroSection.style.setProperty('--hero-scale', String(scale));
-      heroSection.style.setProperty('--hero-radius', `${radius}px`);
-      heroSection.style.setProperty('--hero-overlay-opacity', String(overlayOpacity));
-      heroSection.style.setProperty('--hero-content-y', `${contentY}px`);
-      heroSection.style.setProperty('--hero-content-opacity', String(contentOpacity));
-    };
-
-    let heroFxScrollBound = false;
-
-    const syncHeroFx = () => {
-      if (heroFxEnabled()) {
-        if (!heroFxScrollBound) {
-          window.addEventListener('scroll', updateHeroProgress, { passive: true });
-          heroFxScrollBound = true;
-        }
-        updateHeroProgress();
-      } else {
-        if (heroFxScrollBound) {
-          window.removeEventListener('scroll', updateHeroProgress);
-          heroFxScrollBound = false;
-        }
-        resetHeroFx();
-      }
-    };
-
-    const onHeroFxChange = () => syncHeroFx();
-
-    syncHeroFx();
-    window.addEventListener('resize', onHeroFxChange);
-    if (typeof heroFxMobileMq.addEventListener === 'function') {
-      heroFxMobileMq.addEventListener('change', onHeroFxChange);
-      heroFxReducedMq.addEventListener('change', onHeroFxChange);
-    } else {
-      heroFxMobileMq.addListener(onHeroFxChange);
-      heroFxReducedMq.addListener(onHeroFxChange);
-    }
+    window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+    updateScrollIndicator();
   }
 
   const internalLinks = document.querySelectorAll('a[href^="#"]');
