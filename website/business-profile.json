@@ -1,0 +1,107 @@
+{
+  "@context": "https://schema.org",
+  "type": "PublicBusinessProfile",
+  "version": "1.0",
+  "generatedFor": "llm-crawlers-and-automation",
+  "business": {
+    "legalName": "Malergeschäft Hans Schmitt e.K.",
+    "tradeNames": ["Malergeschäft Hans Schmitt", "Schmitt Malerei Koblenz"],
+    "handwerksbezeichnung": "Maler",
+    "berufsbezeichnung": "Malermeister",
+    "url": "https://malergeschaeft-schmitt.de",
+    "email": "info@malergeschaeft-schmitt.de",
+    "telephone": "+49-261-28744414",
+    "telephoneDisplay": "0261 / 28744414",
+    "fax": "+49-261-28737369",
+    "faxDisplay": "0261 / 28737369",
+    "address": {
+      "streetAddress": "Emser Straße 80",
+      "postalCode": "56076",
+      "addressLocality": "Koblenz",
+      "addressRegion": "Rheinland-Pfalz",
+      "addressCountry": "DE"
+    },
+    "geo": {
+      "latitude": 50.3480602,
+      "longitude": 7.6047456
+    },
+    "hasMap": "https://maps.app.goo.gl/QEFtoo4XoMRHQzND8",
+    "googlePlaceIdNote": "ChIJvc2xt_98e0cR6___ZbzSY7E="
+  },
+  "openingHours": {
+    "mondayToThursday": [
+      { "opens": "07:30", "closes": "12:00" },
+      { "opens": "12:45", "closes": "16:00" }
+    ],
+    "friday": [
+      { "opens": "07:30", "closes": "12:00" },
+      { "opens": "12:45", "closes": "14:45" }
+    ],
+    "saturdaySunday": "closed"
+  },
+  "services": [
+    {
+      "id": "innenarbeiten",
+      "name": "Innenarbeiten",
+      "summary": "Streichen, Tapezieren, Lasieren, Lackieren, Gestaltung, Trockenbau",
+      "url": "https://malergeschaeft-schmitt.de/leistungen/innenarbeiten.html"
+    },
+    {
+      "id": "fassade",
+      "name": "Fassade und Außenarbeiten",
+      "summary": "Fassadenanstrich, Fassadengestaltung, WDVS, Wasserschadensanierung",
+      "url": "https://malergeschaeft-schmitt.de/leistungen/fassade.html"
+    },
+    {
+      "id": "bodenbelaege",
+      "name": "Bodenbeläge",
+      "summary": "Laminat, Teppich, PVC, Linoleum",
+      "url": "https://malergeschaeft-schmitt.de/leistungen/bodenbelaege.html"
+    },
+    {
+      "id": "schimmelbeseitigung",
+      "name": "Schimmelbeseitigung",
+      "summary": "Schimmel- und Feuchtesanierung, Werterhalt, Substanzschutz",
+      "url": "https://malergeschaeft-schmitt.de/leistungen/schimmelbeseitigung.html"
+    }
+  ],
+  "serviceArea": [
+    "Koblenz",
+    "Neuwied",
+    "Andernach",
+    "Lahnstein",
+    "Bendorf",
+    "Mayen",
+    "Vallendar",
+    "Boppard"
+  ],
+  "canonicalUrls": {
+    "home": "https://malergeschaeft-schmitt.de/",
+    "referenzen": "https://malergeschaeft-schmitt.de/referenzen.html",
+    "team": "https://malergeschaeft-schmitt.de/team.html",
+    "impressum": "https://malergeschaeft-schmitt.de/impressum.html",
+    "datenschutz": "https://malergeschaeft-schmitt.de/datenschutz.html",
+    "kontakt": "https://malergeschaeft-schmitt.de/#kontakt",
+    "termin": "https://malergeschaeft-schmitt.de/#termin",
+    "faq": "https://malergeschaeft-schmitt.de/#faq"
+  },
+  "contactPaths": {
+    "telephoneUri": "tel:+4926128744414",
+    "emailUri": "mailto:info@malergeschaeft-schmitt.de",
+    "contactForm": "https://malergeschaeft-schmitt.de/#kontakt",
+    "appointmentRequest": "https://malergeschaeft-schmitt.de/#termin"
+  },
+  "seoKeywords": [
+    "Maler Koblenz",
+    "Malerbetrieb Koblenz",
+    "Malermeister Koblenz",
+    "Fassade streichen Koblenz",
+    "Tapezieren Koblenz"
+  ],
+  "demoNotes": {
+    "isDemoSite": true,
+    "placeholderAssets": "Reference images, hero video, team photos, and review carousel use placeholders until customer delivery.",
+    "noInventedRatings": true,
+    "reviewsSource": "https://maps.app.goo.gl/QEFtoo4XoMRHQzND8"
+  }
+}

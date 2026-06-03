@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenzen | Malergeschäft Hans Schmitt e.K.</title>
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="images/favicon-client.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+  <script src="js/config-apply.js"></script>
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="mainNav" aria-label="Hauptnavigation">
+    <div class="nav__inner">
+      <a href="index.html#hero" class="nav__wordmark" aria-label="Startseite">
+        <picture>
+          <img class="nav__logo" src="images/logo-client.svg" alt="Malergeschäft Hans Schmitt e.K." data-config-alt="true" width="39" height="42" decoding="async">
+        </picture>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#leistungen">Leistungen</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="subpage-main container">
+    <header class="subpage-hero">
+      <h1>Unsere Referenzen</h1>
+      <p data-config="referenzenIntro">Auswahl von Maler-, Fassaden- und Gestaltungsprojekten aus Koblenz und Umgebung.</p>
+    </header>
+    <section class="subpage-card">
+      <h2>Projektgalerie</h2>
+      <div class="referenzen-filter" role="tablist" aria-label="Projektkategorien">
+        <button class="btn btn--sm btn--secondary is-active" type="button" data-filter="all">Alle</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="innen">Innen</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="fassade">Fassade</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="boden">Boden</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="sanierung">Sanierung</button>
+      </div>
+
+      <div class="ref-gallery">
+        <article class="ref-card" data-category="innen">
+          <picture><img data-lightbox src="images/ref_1.svg" alt="Referenzprojekt Innenanstrich in warmem Creme-Ton" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Innen</span>
+        </article>
+        <article class="ref-card" data-category="innen">
+          <picture><img data-lightbox src="images/ref_2.svg" alt="Referenzprojekt Tapezierarbeit mit ruhigem Wandbild" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Tapezieren</span>
+        </article>
+        <article class="ref-card" data-category="fassade">
+          <picture><img data-lightbox src="images/ref_3.svg" alt="Referenzprojekt Fassadenanstrich in Koblenz" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Fassade</span>
+        </article>
+        <article class="ref-card" data-category="innen">
+          <picture><img data-lightbox src="images/ref_4.svg" alt="Referenzprojekt Lackierarbeit an Türen und Zargen" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Lackieren</span>
+        </article>
+        <article class="ref-card" data-category="boden">
+          <picture><img data-lightbox src="images/ref_5.svg" alt="Referenzprojekt Bodenbelag in Wohnraum" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Boden</span>
+        </article>
+        <article class="ref-card" data-category="sanierung">
+          <picture><img data-lightbox src="images/ref_6.svg" alt="Referenzprojekt Sanierung nach Feuchteschaden" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Sanierung</span>
+        </article>
+        <article class="ref-card" data-category="innen">
+          <picture><img data-lightbox src="images/ref_7.svg" alt="Referenzprojekt Dekor- und Spachteltechnik" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Gestaltung</span>
+        </article>
+        <article class="ref-card" data-category="fassade">
+          <picture><img data-lightbox src="images/ref_8.svg" alt="Referenzprojekt Treppenhaus und Eingangsbereich" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Treppenhaus</span>
+        </article>
+      </div>
+      <p class="kontakt-form__note">ALT-Texte projektspezifisch vor Live finalisieren.</p>
+    </section>
+    <section class="subpage-card">
+      <a class="btn btn--primary" href="index.html#termin">Termin buchen</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span class="footer__copy" data-config="copyright">© 2026 Malergeschäft Hans Schmitt e.K., Koblenz</span>
+        <div class="footer__socials" style="display:flex;gap:.8rem;">
+          <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">Facebook</a>
+          <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">Instagram</a>
+        </div>
+        <nav class="footer__legal" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

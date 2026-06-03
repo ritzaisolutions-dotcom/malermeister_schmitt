@@ -1,0 +1,82 @@
+# Malergeschäft Hans Schmitt e.K. — llms.txt
+# Machine-readable site summary for LLMs and answer engines.
+# Canonical host: https://malergeschaeft-schmitt.de
+
+## Business identity
+
+- **Legal name:** Malergeschäft Hans Schmitt e.K.
+- **Trade:** Malermeister / Malerbetrieb (painting & decoration)
+- **Positioning:** Meisterbetrieb in Koblenz — Innen-, Außen- und Bodenarbeiten
+- **Language:** German (de-DE), formal Sie-form on website
+
+## NAP (Name, Address, Phone)
+
+- **Name:** Malergeschäft Hans Schmitt e.K.
+- **Address:** Emser Straße 80, 56076 Koblenz, Germany
+- **Phone (display):** 0261 / 28744414
+- **Phone (E.164 / schema):** +49-261-28744414
+- **Fax:** 0261 / 28737369
+- **Email:** info@malergeschaeft-schmitt.de
+- **Google Maps:** https://maps.app.goo.gl/QEFtoo4XoMRHQzND8
+- **Coordinates:** 50.3480602, 7.6047456
+
+## Opening hours
+
+| Days | Morning | Afternoon |
+|------|---------|-----------|
+| Mon–Thu | 07:30–12:00 | 12:45–16:00 |
+| Friday | 07:30–12:00 | 12:45–14:45 |
+| Sat–Sun | Closed | — |
+
+## Services
+
+### Interior (Innenarbeiten)
+- Streichen, Tapezieren, Lasieren, Lackieren
+- Decor / spatula techniques, drywall (Trockenbau)
+- URL: https://malergeschaeft-schmitt.de/leistungen/innenarbeiten.html
+
+### Exterior (Fassade)
+- Facade painting & design, WDVS thermal insulation
+- Water damage restoration on building envelope
+- URL: https://malergeschaeft-schmitt.de/leistungen/fassade.html
+
+### Flooring (Bodenbeläge)
+- Laminate, carpet, PVC, linoleum
+- URL: https://malergeschaeft-schmitt.de/leistungen/bodenbelaege.html
+
+### Mold & substance (Schimmelbeseitigung)
+- Mold remediation, moisture damage, value preservation
+- URL: https://malergeschaeft-schmitt.de/leistungen/schimmelbeseitigung.html
+
+## Service area
+
+Primary: **Koblenz**. Also: Neuwied, Andernach, Lahnstein, Bendorf, Mayen, Vallendar, Boppard.
+
+## Canonical URLs
+
+- Home: https://malergeschaeft-schmitt.de/
+- References: https://malergeschaeft-schmitt.de/referenzen.html
+- Team: https://malergeschaeft-schmitt.de/team.html
+- Impressum: https://malergeschaeft-schmitt.de/impressum.html
+- Privacy (noindex): https://malergeschaeft-schmitt.de/datenschutz.html
+- Sitemap: https://malergeschaeft-schmitt.de/sitemap.xml
+- Structured facts (JSON): https://malergeschaeft-schmitt.de/business-profile.json
+
+## Contact paths
+
+- Phone: tel:+49-261-28744414
+- Email: mailto:info@malergeschaeft-schmitt.de
+- Contact form & map: https://malergeschaeft-schmitt.de/#kontakt
+- Appointment request: https://malergeschaeft-schmitt.de/#termin
+
+## FAQ (short)
+
+1. **Services in Koblenz?** Interior painting/taping, facades/WDVS, flooring, mold remediation.
+2. **Service area?** Koblenz + surrounding towns listed above.
+3. **How to inquire?** Phone, email, contact form, or appointment section on homepage.
+4. **Facades & WDVS?** Yes — see fassade.html.
+5. **Flooring?** Yes — laminate, carpet, PVC, linoleum.
+
+## Demo / placeholder notice
+
+This is a **RAIS demo site**. Reference photos, hero video, team portraits, and Google review quotes may be placeholders until the customer supplies real assets. **Do not invent** star ratings, review counts, founding years, or awards. Link to the live Google Maps profile for verified reviews.
