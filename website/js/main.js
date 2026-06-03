@@ -381,50 +381,168 @@
   renderBookingState();
   renderMapState();
 
+  /* === FORM MAILTO FALLBACK (bis Web3Forms-Key gesetzt) === */
+  const usesMailtoForm = () => {
+    if (typeof CLIENT === 'undefined') return true;
+    if (CLIENT.formularModus === 'mailto') return true;
+    const key = String(CLIENT.web3formsKey || '').trim();
+    return !key
+      || key.startsWith('[')
+      || key === 'YOUR_WEB3FORMS_ACCESS_KEY'
+      || key === '[WEB3FORMS_ACCESS_KEY]';
+  };
+
+  const getClientEmail = () => {
+    if (typeof CLIENT !== 'undefined' && CLIENT.email && !String(CLIENT.email).startsWith('[')) {
+      return CLIENT.email;
+    }
+    return 'info@malergeschaeft-schmitt.de';
+  };
+
+  const openMailto = (subject, bodyLines) => {
+    const body = bodyLines.filter((line) => line !== undefined && line !== null).join('\n');
+    const mailto = `mailto:${encodeURIComponent(getClientEmail())}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  };
+
+  const buildContactMailtoBody = (form) => {
+    const formData = new FormData(form);
+    const anfrageSelect = form.querySelector('#anfrageart');
+    const anfrageLabel = anfrageSelect?.selectedOptions?.[0]?.textContent
+      || formData.get('anfrageart')
+      || '';
+    return [
+      `Vorname: ${formData.get('vorname') || ''}`,
+      `Nachname: ${formData.get('nachname') || ''}`,
+      `Telefon: ${formData.get('telefon') || ''}`,
+      `E-Mail: ${formData.get('email') || ''}`,
+      `Anliegen: ${anfrageLabel}`,
+      '',
+      String(formData.get('nachricht') || '').trim()
+    ];
+  };
+
+  const submitWeb3Form = async (form, resultEl, successText) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+
+    const formData = new FormData(form);
+    const accessKey = String(formData.get('access_key') || '').trim();
+    const honeypot = String(formData.get('website') || '').trim();
+    if (honeypot) {
+      if (resultEl) resultEl.textContent = 'Anfrage blockiert.';
+      if (submitButton) submitButton.disabled = false;
+      return;
+    }
+    if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY' || accessKey === '[WEB3FORMS_ACCESS_KEY]') {
+      if (resultEl) resultEl.textContent = 'Bitte zuerst den echten Web3Forms Access Key eintragen.';
+      if (submitButton) submitButton.disabled = false;
+      return;
+    }
+
+    try {
+      const response = await fetch(form.action || 'https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.message || 'Anfrage konnte nicht gesendet werden.');
+      }
+      if (resultEl) resultEl.textContent = successText;
+      form.reset();
+    } catch (error) {
+      if (resultEl) resultEl.textContent = `Fehler: ${error.message}`;
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  };
+
+  /* === FAQ: ein Akkordeon offen === */
+  const faqList = document.querySelector('[data-faq-list]');
+  if (faqList) {
+    faqList.addEventListener('toggle', (event) => {
+      const item = event.target;
+      if (!item.matches('.faq-item') || !item.open) return;
+      faqList.querySelectorAll('.faq-item[open]').forEach((other) => {
+        if (other !== item) other.open = false;
+      });
+    }, true);
+  }
+
   /* === CONTACT FORM === */
   const contactForm = document.getElementById('kontaktForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const message = document.getElementById('kontaktFormResult');
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      if (submitButton) submitButton.disabled = true;
-
-      const formData = new FormData(contactForm);
-      const accessKey = String(formData.get('access_key') || '').trim();
-      const honeypot = String(formData.get('website') || '').trim();
+      const honeypot = String(new FormData(contactForm).get('website') || '').trim();
       if (honeypot) {
         if (message) message.textContent = 'Anfrage blockiert.';
-        if (submitButton) submitButton.disabled = false;
-        return;
-      }
-      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        if (message) message.textContent = 'Bitte zuerst den echten Web3Forms Access Key eintragen.';
-        if (submitButton) submitButton.disabled = false;
         return;
       }
 
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData
-        });
-
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data?.message || 'Anfrage konnte nicht gesendet werden.');
-        }
+      if (usesMailtoForm()) {
+        openMailto('Kontaktanfrage über Website', buildContactMailtoBody(contactForm));
         if (message) {
-          message.textContent = 'Danke! Ihre Anfrage wurde erfolgreich übermittelt.';
+          message.textContent = 'Ihr E-Mail-Programm öffnet sich — bitte senden Sie die Nachricht dort ab.';
         }
-        contactForm.reset();
-      } catch (error) {
-        if (message) {
-          message.textContent = `Fehler: ${error.message}`;
-        }
-      } finally {
-        if (submitButton) submitButton.disabled = false;
+        return;
       }
+
+      await submitWeb3Form(
+        contactForm,
+        message,
+        'Danke! Ihre Anfrage wurde erfolgreich übermittelt.'
+      );
+    });
+  }
+
+  /* === RÜCKRUF-FORMULAR (#termin) === */
+  const rueckrufForm = document.getElementById('rueckrufForm');
+  if (rueckrufForm) {
+    rueckrufForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const result = document.getElementById('rueckrufFormResult');
+      const formData = new FormData(rueckrufForm);
+      openMailto('Rückrufanfrage', [
+        `Name: ${formData.get('name') || ''}`,
+        `Telefon: ${formData.get('telefon') || ''}`,
+        `Wunschzeit: ${formData.get('wunschzeit') || '—'}`,
+        '',
+        String(formData.get('nachricht') || '').trim()
+      ]);
+      if (result) {
+        result.textContent = 'Ihr E-Mail-Programm öffnet sich — bitte senden Sie die Rückrufanfrage dort ab.';
+      }
+    });
+  }
+
+  /* === TERMIN-FORMULAR (Web3Forms-Variante) === */
+  const terminForm = document.getElementById('terminForm');
+  if (terminForm) {
+    terminForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const result = document.getElementById('terminFormResult');
+      if (usesMailtoForm()) {
+        const formData = new FormData(terminForm);
+        openMailto('Terminanfrage', [
+          `Name: ${formData.get('name') || ''}`,
+          `Telefon: ${formData.get('telefon') || ''}`,
+          `Wunschtermin: ${formData.get('wunschtermin') || '—'}`,
+          '',
+          String(formData.get('nachricht') || '').trim()
+        ]);
+        if (result) {
+          result.textContent = 'Ihr E-Mail-Programm öffnet sich — bitte senden Sie die Terminanfrage dort ab.';
+        }
+        return;
+      }
+      await submitWeb3Form(
+        terminForm,
+        result,
+        'Ihre Terminanfrage wurde gesendet — wir melden uns bald!'
+      );
     });
   }
 

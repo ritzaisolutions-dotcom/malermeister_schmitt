@@ -416,7 +416,34 @@
       }
     });
 
-    // ── 26. PARTNER-KARUSSELL ─────────────────────────────
+    // ── 26. FAQ-AKKORDEON ─────────────────────────────────
+    const renderFaq = () => {
+      const list = document.querySelector('[data-faq-list]');
+      if (!list || !Array.isArray(CLIENT.faq) || !CLIENT.faq.length) return;
+
+      const escapeHtml = (str) => String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      list.innerHTML = CLIENT.faq.map((item, index) => {
+        const frage = item.frage || item.q || '';
+        const antwort = item.antwort || item.a || '';
+        if (!frage || String(frage).startsWith('[')) return '';
+        return `
+          <details class="faq-item" id="faq-${index}">
+            <summary class="faq-item__q">${escapeHtml(frage)}</summary>
+            <div class="faq-item__body">
+              <p class="faq-item__a">${escapeHtml(antwort)}</p>
+            </div>
+          </details>`;
+      }).join('');
+    };
+
+    renderFaq();
+
+    // ── 27. PARTNER-KARUSSELL ─────────────────────────────
     const renderPartners = () => {
       if (!Array.isArray(CLIENT.partner) || !CLIENT.partner.length) return;
 
@@ -467,7 +494,7 @@
 
     renderPartners();
 
-    // ── 27. DATENSCHUTZ: aufsichtsbehoerde Direktlink ────
+    // ── 28. DATENSCHUTZ: aufsichtsbehoerde Direktlink ────
     // Hinweis: href wird bereits durch Sektion 4 (data-config-href="aufsichtsbehoerde") gesetzt.
     // Textinhalt wird durch Sektion 3 (data-config="aufsichtsbehoerde") auf dem Kind-Element gesetzt.
     // Diese Sektion dient als Sicherheitsnetz für Seiten, die nur das <a> ohne Span nutzen.

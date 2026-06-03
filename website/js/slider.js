@@ -17,8 +17,8 @@
 
   const imageSets = {
     flaeche: {
-      before: 'images/vorher_slide.svg',
-      after: 'images/nachher_slide.svg',
+      before: 'images/vorher_slide.jpg',
+      after: 'images/nachher_slide.jpg',
       label: 'Malerarbeiten'
     }
   };

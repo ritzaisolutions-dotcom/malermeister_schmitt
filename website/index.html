@@ -106,6 +106,14 @@
       padding: var(--sp-5) var(--sp-5) var(--sp-6);
       box-shadow: var(--s-lg);
     }
+    .termin-form-box__title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0 0 var(--sp-4);
+      text-align: center;
+    }
     .termin-form-box label { color: var(--text); }
     .termin-form-box input,
     .termin-form-box textarea,
@@ -298,7 +306,7 @@
               "name": "Wie läuft eine Anfrage ab?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Per Telefon, Kontaktformular oder Terminanfrage auf der Website. Danach klären wir Umfang, Untergrund und Termine in einem unverbindlichen Gespräch."
+                "text": "Per Telefon, E-Mail, Kontaktformular oder Rückruf-Anfrage auf der Website. Danach klären wir Umfang, Untergrund und Termine in einem unverbindlichen Gespräch."
               }
             },
             {
@@ -315,6 +323,14 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Ja — Laminat, Teppich, PVC und Linoleum werden nach sauberer Untergrundvorbereitung verlegt."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Erstellen Sie kostenlose Angebote?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ja. Nach Ihrer Anfrage klären wir den Umfang und erstellen auf Wunsch ein unverbindliches Angebot — vor Ort in Koblenz oder telefonisch."
               }
             }
           ]
@@ -356,7 +372,7 @@
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
 
-      <a href="#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <a href="#termin" class="btn btn--primary btn--sm nav__cta">Rückruf anfordern</a>
 
       <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -380,7 +396,7 @@
     <a href="team.html">Team</a>
     <a href="#familie">Über uns</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
+    <a href="#termin" class="btn btn--primary" style="margin-top:1rem">Rückruf anfordern</a>
     <span class="nav__mobile-phone">
       <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">0261 / 28744414</a>
     </span>
@@ -420,7 +436,7 @@
           </h1>
 
           <div class="hero__ctas">
-            <a href="#termin" class="btn btn--primary btn--lg">Termin vereinbaren</a>
+            <a href="#termin" class="btn btn--primary btn--lg">Rückruf anfordern</a>
             <a href="tel:#" class="btn btn--ghost btn--lg hero__cta-phone" data-config-href="tel">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span data-config="telefonDisplay">0261 / 28744414</span>
@@ -998,64 +1014,48 @@
 
 
   <!-- ╔════════════════════════════════╗ -->
-  <!-- ║  FAQ                           ║ -->
+  <!-- ║  TERMIN / RÜCKRUF              ║ -->
   <!-- ╚════════════════════════════════╝ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <header class="section-header section-header--center reveal">
-        <span class="section-label">Häufige Fragen</span>
-        <h2 class="section-h2">Antworten auf typische Anfragen</h2>
-        <p class="section-sub">Kurz und sachlich — für Orientierung vor dem ersten Gespräch.</p>
-      </header>
-      <div class="faq-list reveal">
-        <article class="faq-item" id="faq-leistungen">
-          <h3 class="faq-item__q">Welche Malerarbeiten bietet Malergeschäft Hans Schmitt in Koblenz an?</h3>
-          <p class="faq-item__a">Innenarbeiten (Streichen, Tapezieren, Lasieren, Lackieren, Gestaltung, Trockenbau), Fassadenarbeiten mit WDVS, Bodenbeläge sowie Schimmelbeseitigung und Sanierung nach Wasserschäden. Details zu den <a href="#leistungen">Leistungen</a> und den Unterseiten <a href="leistungen/innenarbeiten.html">Innenarbeiten</a>, <a href="leistungen/fassade.html">Fassade</a>, <a href="leistungen/bodenbelaege.html">Bodenbeläge</a> und <a href="leistungen/schimmelbeseitigung.html">Schimmelbeseitigung</a>.</p>
-        </article>
-        <article class="faq-item" id="faq-region">
-          <h3 class="faq-item__q">In welchen Orten rund um Koblenz arbeitet der Betrieb?</h3>
-          <p class="faq-item__a">Hauptstandort ist Koblenz (Emser Straße 80, 56076). Wir betreuen Projekte auch in Neuwied, Andernach, Lahnstein, Bendorf, Mayen, Vallendar und Boppard.</p>
-        </article>
-        <article class="faq-item" id="faq-ablauf">
-          <h3 class="faq-item__q">Wie läuft eine Anfrage ab?</h3>
-          <p class="faq-item__a">Sie erreichen uns telefonisch unter <a href="tel:+4926128744414">0261 / 28744414</a>, per E-Mail an <a href="mailto:info@malergeschaeft-schmitt.de">info@malergeschaeft-schmitt.de</a>, über das <a href="#kontakt">Kontaktformular</a> oder die <a href="#termin">Terminanfrage</a>. Wir besprechen Umfang, Untergrund und Zeitplan in einem unverbindlichen Gespräch.</p>
-        </article>
-        <article class="faq-item" id="faq-fassade">
-          <h3 class="faq-item__q">Bietet der Betrieb Fassadenarbeiten und WDVS an?</h3>
-          <p class="faq-item__a">Ja — Fassadenanstrich, Fassadengestaltung, Wärmedämmverbundsystem (WDVS) und Sanierung von Wasserschäden an der Gebäudehülle. Mehr dazu auf der Seite <a href="leistungen/fassade.html">Fassade &amp; Außenarbeiten</a>.</p>
-        </article>
-        <article class="faq-item" id="faq-boden">
-          <h3 class="faq-item__q">Macht der Betrieb auch Bodenbeläge?</h3>
-          <p class="faq-item__a">Ja — Laminat, Teppich, PVC und Linoleum werden nach sauberer Untergrundvorbereitung verlegt. Details unter <a href="leistungen/bodenbelaege.html">Bodenbeläge</a>.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ╔════════════════════════════════╗ -->
-  <!-- ║  TERMIN                        ║ -->
-  <!-- ╚════════════════════════════════╝ -->
-  <!-- Variante: CLIENT.terminVariante = "calcom" | "whatsapp" | "formular" -->
+  <!-- Variante: CLIENT.terminVariante = "rueckruf" | "calcom" | "whatsapp" | "formular" -->
   <section class="section section--dark" id="termin">
     <div class="container">
       <header class="section-header section-header--center reveal">
         <span class="section-label">Jetzt starten</span>
         <h2 class="section-h2">Bereit für Ihr Projekt?</h2>
-        <p class="section-sub">Kostenloses Beratungsgespräch – unverbindlich und ohne Verpflichtung.</p>
+        <p class="section-sub">Rückruf, Telefon oder WhatsApp — unverbindlich und ohne Online-Kalender.</p>
       </header>
 
-      <div class="termin-grid">
-        <div class="termin-card termin-card--featured reveal reveal-delay-1">
-          <div class="termin-card__icon">HS</div>
-          <h3 class="termin-card__title">Kostenloses Beratungsgespräch</h3>
-          <p class="termin-card__text">Wir besprechen Ihr Projekt in Ruhe. Vor Ort oder telefonisch, ganz wie Sie möchten.</p>
-          <ul class="termin-meta">
-            <li>ca. 30-60 Minuten</li>
-            <li>Bei Ihnen vor Ort oder telefonisch</li>
-            <li>Kostenlos und unverbindlich</li>
-          </ul>
-          <a class="btn btn--primary btn--full" href="#termin-buchung">Beratung buchen</a>
+      <!-- VARIANTE: Rückruf (Standard) -->
+      <div data-termin="rueckruf" id="termin-rueckruf" class="termin-rueckruf reveal">
+        <p class="termin-rueckruf__hint">Wir melden uns zeitnah bei Ihnen — in der Regel innerhalb eines Werktags.</p>
+        <div class="termin-rueckruf__ctas">
+          <a href="tel:#" class="btn btn--primary btn--lg" data-config-href="tel">Jetzt anrufen</a>
+          <a href="#" class="btn btn--wa btn--lg" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+        <div class="termin-form-box">
+          <h3 class="termin-form-box__title">Rückruf anfordern</h3>
+          <form id="rueckrufForm" novalidate>
+            <div class="kontakt-form__grid">
+              <label for="rueckruf_name">Ihr Name
+                <input id="rueckruf_name" name="name" type="text" required autocomplete="name" placeholder="Max Mustermann">
+              </label>
+              <label for="rueckruf_phone">Telefon
+                <input id="rueckruf_phone" name="telefon" type="tel" required autocomplete="tel" placeholder="0261 / 28744414">
+              </label>
+            </div>
+            <label for="rueckruf_zeit">Wunschzeit (optional)
+              <input id="rueckruf_zeit" name="wunschzeit" type="text" placeholder="z. B. werktags vormittags">
+            </label>
+            <label for="rueckruf_nachricht">Ihr Anliegen
+              <textarea id="rueckruf_nachricht" name="nachricht" rows="3" placeholder="Kurz beschreiben, worum es geht — wir rufen Sie zurück."></textarea>
+            </label>
+            <label class="kontakt-form__check" for="rueckruf_dsgvo">
+              <input id="rueckruf_dsgvo" name="dsgvo_consent" type="checkbox" required>
+              <span>Ich willige in die Verarbeitung meiner Angaben zur Bearbeitung meiner Rückrufanfrage ein (gemäß <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>).</span>
+            </label>
+            <button type="submit" class="btn btn--primary">Rückruf anfordern</button>
+            <p id="rueckrufFormResult" class="kontakt-form__note" aria-live="polite"></p>
+          </form>
         </div>
       </div>
 
@@ -1063,7 +1063,7 @@
            VARIANTE A: Cal.com (Standard)
            Eingeblendet wenn CLIENT.terminVariante === "calcom"
       ────────────────────────────────────────────────────── -->
-      <div data-termin="calcom" id="termin-buchung">
+      <div data-termin="calcom" id="termin-buchung" hidden>
         <div class="consent-gate reveal" id="termin-consent">
           <h3 class="consent-gate__title">Online-Terminbuchung (Cal.com) nach Einwilligung</h3>
           <p class="consent-gate__text">
@@ -1210,7 +1210,7 @@
             </div>
           </div>
 
-          <a href="#termin" class="btn btn--primary">Termin vereinbaren</a>
+          <a href="#termin" class="btn btn--primary">Rückruf anfordern</a>
         </div>
 
         <div class="kontakt-map reveal reveal-delay-1" id="gatedMapContainer">
@@ -1224,6 +1224,15 @@
             </div>
           </div>
           <div id="realMapContainer" class="kontakt-map__real" style="display: none; width: 100%; height: 100%;"></div>
+        </div>
+
+        <div class="kontakt-faq reveal reveal-delay-1" id="faq">
+          <header class="kontakt-faq__head">
+            <span class="section-label">Häufige Fragen</span>
+            <h3 class="kontakt-faq__title">Antworten auf typische Anfragen</h3>
+            <p class="kontakt-faq__sub">Kurz und sachlich — für Orientierung vor dem ersten Gespräch.</p>
+          </header>
+          <div class="faq-list" data-faq-list></div>
         </div>
 
         <!-- Kontaktformular: gesteuert durch CLIENT.kontaktformularAktiv -->
@@ -1310,7 +1319,7 @@
             <li><a href="team.html">Team</a></li>
             <li><a href="#familie">Über uns</a></li>
             <li><a href="#bewertungen">Bewertungen</a></li>
-            <li><a href="#termin">Termin buchen</a></li>
+            <li><a href="#termin">Rückruf anfordern</a></li>
           </ul>
         </div>
 
@@ -1363,42 +1372,5 @@
   <script src="js/pdf.js" defer></script>
   <script src="js/slider.js" defer></script>
 
-  <!-- Terminanfrage-Formular Handler (nur für terminVariante = "formular") -->
-  <script>
-    (function () {
-      const form = document.getElementById('terminForm');
-      if (!form) return;
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const btn    = document.getElementById('terminFormSubmitBtn');
-        const result = document.getElementById('terminFormResult');
-        if (!btn || !result) return;
-        const origText   = btn.textContent;
-        btn.disabled     = true;
-        btn.textContent  = 'Wird gesendet …';
-        result.textContent = '';
-        try {
-          const res  = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: new FormData(form)
-          });
-          const data = await res.json();
-          if (data.success) {
-            result.textContent  = 'Ihre Terminanfrage wurde gesendet – wir melden uns bald!';
-            result.style.color  = 'var(--accent, #2980b9)';
-            form.reset();
-          } else {
-            throw new Error('server');
-          }
-        } catch {
-          result.textContent = 'Leider ist ein Fehler aufgetreten. Bitte rufen Sie uns direkt an.';
-          result.style.color = '#e74c3c';
-        } finally {
-          btn.disabled    = false;
-          btn.textContent = origText;
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

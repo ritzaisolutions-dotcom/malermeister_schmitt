@@ -34,14 +34,19 @@ const CLIENT = {
   // ── WHATSAPP ───────────────────────────────────────────────
   // Leer lassen ("") um WhatsApp-Button zu deaktivieren.
   // Format: internationale Nummer ohne Leerzeichen, z. B. "+4917612345678"
-  whatsapp:            "",
+  whatsapp:            "+4926128744414",
   whatsappVornachricht: "Hallo, ich interessiere mich für Ihre Leistungen und würde gerne mehr erfahren.",
 
   // ── TERMINBUCHUNG VARIANTE ─────────────────────────────────
-  // "calcom"   → Cal.com Embed hinter Consent-Gate (Standard)
-  // "whatsapp" → Großer WhatsApp-Button (kein externer Embed-Dienst)
-  // "formular" → Einfaches Terminanfrage-Formular via Web3Forms
-  terminVariante: "formular",
+  // "calcom"   → Cal.com Embed hinter Consent-Gate
+  // "whatsapp" → Großer WhatsApp-Button
+  // "formular" → Terminanfrage-Formular via Web3Forms
+  // "rueckruf" → Telefon + WhatsApp + Rückruf-Formular (mailto)
+  terminVariante: "rueckruf",
+
+  // ── FORMULARE ──────────────────────────────────────────────
+  // "mailto" bis Web3Forms-Key vor Go-Live; "web3forms" mit echtem Key
+  formularModus: "mailto",
 
   // ── GOOGLE ─────────────────────────────────────────────────
   googleMapsEmbedUrl:    "",
@@ -201,18 +206,46 @@ const CLIENT = {
   partnerIntro: "Gemeinsam mit regionalen Fachbetrieben und bewährten Systempartnern in Koblenz und der Region.",
   partnerBgColor: "var(--secondary-dark, #1c1a14)",
   partner: [
-    { name: "Schreinerei Meerbothe",       url: "http://www.schreinerei-meerbothe.de/start.html", logo: "" },
-    { name: "Schreinerei Müller",         url: "http://innenausbau-mueller.com/",                logo: "" },
+    { name: "Schreinerei Meerbothe",       url: "http://www.schreinerei-meerbothe.de/start.html", logo: "partner/meerbothe.png" },
+    { name: "Schreinerei Müller",         url: "http://innenausbau-mueller.com/",                logo: "partner/mueller.png" },
     { name: "Elektro-Service-Dietze",     url: "",                                               logo: "" },
-    { name: "Jakob Dunkel",               url: "http://www.dunkel-elektroanlagen.de/",           logo: "" },
-    { name: "Dachdecker Marco Zeuzheim",  url: "http://www.dachdecker-zeuzheim.de/",             logo: "" },
-    { name: "Bedachungen Rudolf Fetz",    url: "http://www.bedachungen-fetz.de/",                logo: "" },
-    { name: "a.knipp natursteine",        url: "http://www.aknipp.de/",                           logo: "" },
-    { name: "Kürsten Sanitär",            url: "http://www.kuersten-shk.de/",                     logo: "" },
-    { name: "Brillux",                    url: "http://www.brillux.de/",                           logo: "" },
-    { name: "Südwest",                    url: "https://suedwest.de/",                             logo: "" },
-    { name: "ED Baucenter",               url: "https://ed-baucenter.de/",                         logo: "" },
-    { name: "MEG",                        url: "https://www.meg.de/",                              logo: "" }
+    { name: "Jakob Dunkel",               url: "http://www.dunkel-elektroanlagen.de/",           logo: "partner/dunkel.png" },
+    { name: "Dachdecker Marco Zeuzheim",  url: "http://www.dachdecker-zeuzheim.de/",             logo: "partner/zeuzheim.png" },
+    { name: "Bedachungen Rudolf Fetz",    url: "http://www.bedachungen-fetz.de/",                logo: "partner/fetz.png" },
+    { name: "a.knipp natursteine",        url: "http://www.aknipp.de/",                           logo: "partner/aknipp.png" },
+    { name: "Kürsten Sanitär",            url: "http://www.kuersten-shk.de/",                     logo: "partner/kuersten.png" },
+    { name: "Brillux",                    url: "http://www.brillux.de/",                           logo: "partner/brillux.png" },
+    { name: "Südwest",                    url: "https://suedwest.de/",                             logo: "partner/suedwest.png" },
+    { name: "ED Baucenter",               url: "https://ed-baucenter.de/",                         logo: "partner/ed-baucenter.png" },
+    { name: "MEG",                        url: "https://www.meg.de/",                              logo: "partner/meg.png" }
+  ],
+
+  // ── FAQ (Akkordeon neben Kontaktformular) ──────────────────
+  faq: [
+    {
+      frage: "Welche Malerarbeiten bietet Malergeschäft Hans Schmitt in Koblenz an?",
+      antwort: "Innenarbeiten (Streichen, Tapezieren, Lasieren, Lackieren, Gestaltung, Trockenbau), Fassadenarbeiten mit WDVS, Bodenbeläge sowie Schimmelbeseitigung und Sanierung nach Wasserschäden."
+    },
+    {
+      frage: "In welchen Orten rund um Koblenz arbeitet der Betrieb?",
+      antwort: "Hauptstandort ist Koblenz (Emser Straße 80, 56076). Wir betreuen Projekte auch in Neuwied, Andernach, Lahnstein, Bendorf, Mayen, Vallendar und Boppard."
+    },
+    {
+      frage: "Wie läuft eine Anfrage ab?",
+      antwort: "Sie erreichen uns telefonisch, per E-Mail, über das Kontaktformular oder die Rückruf-Anfrage. Wir besprechen Umfang, Untergrund und Zeitplan in einem unverbindlichen Gespräch."
+    },
+    {
+      frage: "Bietet der Betrieb Fassadenarbeiten und WDVS an?",
+      antwort: "Ja — Fassadenanstrich, Fassadengestaltung, Wärmedämmverbundsystem (WDVS) und Sanierung von Wasserschäden an der Gebäudehülle."
+    },
+    {
+      frage: "Macht der Betrieb auch Bodenbeläge?",
+      antwort: "Ja — Laminat, Teppich, PVC und Linoleum werden nach sauberer Untergrundvorbereitung verlegt."
+    },
+    {
+      frage: "Erstellen Sie kostenlose Angebote?",
+      antwort: "Ja. Nach Ihrer Anfrage klären wir den Umfang und erstellen auf Wunsch ein unverbindliches Angebot — vor Ort in Koblenz oder telefonisch."
+    }
   ],
 
   // ── INTERN ─────────────────────────────────────────────────
